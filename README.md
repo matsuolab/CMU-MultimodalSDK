@@ -3,6 +3,8 @@
 
 CMU-Multimodal SDK provides tools to easily load well-known multimodal datasets and rapidly build neural multimodal deep models. Hence the SDK comprises of two modules: 1) mmdatasdk: module for downloading and procesing multimodal datasets using computational sequences. 2) mmmodelsdk: tools to utilize complex neural models as well as layers for building new models. The fusion models in prior papers will be released here. 
 
+If you are only interested in downloading word-aligned data (but not exploring new features or alignment techniques) and previous models please look at the FAQ at the end of this page. 
+
 # News
 
 --> **Version 1.1 announced**. Social-IQ 1.0 has been released. 
@@ -18,8 +20,6 @@ CMU-Multimodal SDK provides tools to easily load well-known multimodal datasets 
 --> Alignment function on large datasets improved ~40x in speed. CMU-MOSEI now aligns in less than 4 hours. Previously the full dataset took around 2-3 days to fully align, majority of which was spent on alignment function.
 
 --> Have a look at the newly released RAVEN model: https://github.com/victorywys/RAVEN - https://arxiv.org/pdf/1811.09362.pdf - tldr: while previously we averaged nonverbal information for each word under assumption that subword nonverbal behaviors are probably mostly constant, we recently discovered that better modeling of subword nonverbal behaviors actually helps a lot! More than we originally anticipated, we are able to achieve competative results with SOTA just using a LSTM on nonverbal shifts in word vectors. 
-
---> BERT embeddings now available for CMU-MOSI.
 
 --> **Raw data now available for download outside SDK - download from http://immortal.multicomp.cs.cmu.edu/raw_datasets/**. 
 
@@ -180,8 +180,8 @@ Through the very first implementation of the SDK, we learned a lot about necessa
 
 Please report it ASAP on the issues tab in github or simply contact us through email. We normally respond within 12 hours to the most urgent issues. 
 
-#### 9. Do you share the data for publications prior to mid 2018?
+#### 9. Do you share the code and data for publications prior to mid 2018?
 
-Yes, we do here is the link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/old_processed_data/. These are exact data used for our experiments, already aligned at word level. You can certainly use this data, but I do advocate exploring the datasets using the SDK. For example try different alignments, or strategies. (Please note that CMU-MOSEI had some issues for some videos over their acoustic modality. They are now solved and CMU-MOSEI downloaded from SDK gets better performance than the one we ran experiments on for original paper)
+Yes, we do here is the link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/old_processed_data/ and here is the code (theano): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY. These are exact data used for our experiments, already aligned at word level. You can certainly use this data, but I do advocate exploring the datasets using the SDK. For example try different alignments, or strategies. (Please note that CMU-MOSEI had some issues for some videos over their acoustic modality. They are now solved and CMU-MOSEI downloaded from SDK gets better performance than the one we ran experiments on for original paper)
 
 
