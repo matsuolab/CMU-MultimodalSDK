@@ -7,6 +7,8 @@ If you are only interested in downloading word-aligned data (but not exploring n
 
 # News
 
+--> **We released all the previous code which was in theano - check FAQ for download**. RL for Sentiment, MFN, MARN, and Graph-MFN. Unfortunately theano got deprecated before we could clean up these codes for release, and we moved on to pytorch. The codes are exactly identical to what we submitted the papers with, and they are running with the latest version available through pip. Newest pytorch implementations of our fusion methods are available in mmmodelsdk in mmsdk. 
+
 --> **Version 1.1 announced**. Social-IQ 1.0 has been released. 
 
 --> **Version 1.0.5 announced**. Two new functions got added: revert and imputate. Revert takes an aligned computational sequence with segment ids (i.e. y[z]) and builds a computational sequence without segment ids (i.e. y) by stacking intervals and features. Imputate fills the gaps in alignment, say computational sequence x does not have segment y[z] then that segment can be filled with say zeros with the same shape as required by x. A reference computational sequence is needed for this purpose to provide intervals. The imputation feature shape will be (1 by shape of x featureset). These two functions take a lot of guess work out of the equation when developing models. Tutorials coming soon :)
