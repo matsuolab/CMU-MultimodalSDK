@@ -3,7 +3,25 @@
 
 CMU-Multimodal SDK provides tools to easily load well-known multimodal datasets and rapidly build neural multimodal deep models. Hence the SDK comprises of two modules: 1) mmdatasdk: module for downloading and procesing multimodal datasets using computational sequences. 2) mmmodelsdk: tools to utilize complex neural models as well as layers for building new models. The fusion models in prior papers will be released here. 
 
-If you are only interested in downloading word-aligned data (but not exploring new features or alignment techniques) and previous models please look at the FAQ at the end of this page. 
+All the datasets here are processed using the SDK (even the old_processed_data folder which uses SDK V0). You can acquire the citations for the computational sequences used in your project by calling the below functions on your dataset:	
+
+```python
+>>> mydataset.bib_citations(open('mydataset.bib','w'))
+>>> mycompseq.bib_citations(open('mycompseq.bib','w'))
+```
+
+If you use the data and models created under the CMU Multimodal SDK, please consider citing the research paper that sparked the creation of the SDK and unified multiple multimodal datasets:
+
+``` 
+@inproceedings{zadeh2018multi,
+  title={Multi-attention recurrent network for human communication comprehension},
+  author={Zadeh, Amir and Liang, Paul Pu and Poria, Soujanya and Vij, Prateek and Cambria, Erik and Morency, Louis-Philippe},
+  booktitle={Thirty-Second AAAI Conference on Artificial Intelligence},
+  year={2018}
+}
+```
+
+If you are only interested in downloading word-aligned data (but not exploring new features or alignment techniques) and previous models (in theano) please look at the FAQ at the end of this page. The files are ready-to-go and require no alignment.  
 
 # News
 
@@ -111,26 +129,7 @@ def myavg(intervals,features):
 
 Multiple functions can be passed to *collapse_functions*, each of them will be applied one by one and will be concatenated as the final output. 
 
-## Citations
-To cite the CMU Multimodal SDK:
 
-``` 
-@inproceedings{zadeh2018multi,
-  title={Multi-attention recurrent network for human communication comprehension},
-  author={Zadeh, Amir and Liang, Paul Pu and Poria, Soujanya and Vij, Prateek and Cambria, Erik and Morency, Louis-Philippe},
-  booktitle={Thirty-Second AAAI Conference on Artificial Intelligence},
-  year={2018}
-}
-```
-
-To acquire citations for all computational sequence resources you have used simply call the bib_citations method either from an mmdataset or computational_sequence object:	
-
-```python
->>> mydataset.bib_citations(open('mydataset.bib','w'))
->>> mycompseq.bib_citations(open('mycompseq.bib','w'))
-```
-	
-This will output all the citations for what you have used. You may need to remove duplicates. 
 
 
 # Supported Datasets
