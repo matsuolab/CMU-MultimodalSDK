@@ -188,6 +188,6 @@ Please report it ASAP on the issues tab in github or simply contact us through e
 
 #### 9. Do you share the code and data for publications prior to mid 2018?
 
-Yes, we do here is the link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/old_processed_data/ and here is the code (theano): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY. These are exact data used for our experiments, already aligned at word level. You can certainly use this data, but I do advocate exploring the datasets using the SDK. For example try different alignments, or strategies. (Please note that CMU-MOSEI had some issues for some videos over their acoustic modality. They are now solved and CMU-MOSEI downloaded from SDK gets better performance than the one we ran experiments on for original paper)
+Yes, we do here is the link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/ and here is the code (theano): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY. These are exact data used for our experiments, already aligned at word level. You can certainly use this data, but I do advocate exploring the datasets using the SDK. For example try different alignments, or strategies. (Please note that CMU-MOSEI had some issues for some videos over their acoustic modality. They are now solved and CMU-MOSEI downloaded from SDK gets better performance than the one we ran experiments on for original paper)
 
 
