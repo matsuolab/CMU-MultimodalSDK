@@ -21,7 +21,12 @@ If you use the data and models created under the CMU Multimodal SDK, please cons
 }
 ```
 
-If you are only interested in downloading word-aligned data (but not exploring new features or alignment techniques) and previous models (in theano) please look at the FAQ at the end of this page. The files are ready-to-go and require no alignment.  
+If you are only interested in downloading the word-aligned data and models to run experiments on (and not interested in exploring new features or alignment techniques), the ready-to-go aligned files can be downloaded from: 
+
+Data: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/ 
+
+RL, MFN, MARN, Graph-MFN Model Codes: https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY
+
 
 # News
 
