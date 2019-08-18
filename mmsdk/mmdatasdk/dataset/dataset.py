@@ -101,7 +101,7 @@ class mmdataset:
 		self.__unify_dataset()
 
 		#building the relevant entries to the reference - what we do in this section is simply removing all the [] from the entry ids and populating them into a new dictionary
-		log.status("Alignment based on <%s> computational sequence will start shortly ..."%reference)
+		log.status("Pre-alignment based on <%s> computational sequence will now be done ..."%reference)
 		relevant_entries=self.__get_relevant_entries(reference)
 
 		pbar = tqdm(total=len(refseq.keys()),unit=" Computational Sequence Entries",leave=False)
@@ -304,5 +304,5 @@ class mmdataset:
 				relevant_entries_np[otherseq_key][key]={}
 				relevant_entries_np[otherseq_key][key]["intervals"]=relev_intervals_np
 				relevant_entries_np[otherseq_key][key]["features"]=relev_features_np
-
+			log.status("Pre-alignment done for <%s> ..."%otherseq_key)
 		return relevant_entries_np
