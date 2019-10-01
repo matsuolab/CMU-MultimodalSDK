@@ -25,7 +25,7 @@ If you are only interested in downloading the word-aligned data and models to ru
 
 Data: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/ 
 
-RL, MFN, MARN, Graph-MFN Model Codes: https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY
+RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please refer to related repos for pytorch implementation for some of these models): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY
 
 
 # News
