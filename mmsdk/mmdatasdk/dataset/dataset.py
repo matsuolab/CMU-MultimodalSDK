@@ -167,7 +167,7 @@ class mmdataset:
 		if len(self.keys())==0:
 			log.error("The dataset contains no computational sequences ... Exiting!",error=True)
 		self.unify()
-		all_keys=self[self.keys()[0]].keys()
+		all_keys=list(self[list(self.keys())[0]].keys())
 		if len(all_keys)==0:
 			log.error("No entries in computational sequences or unify found no shared entries ... Exiting!")
 
