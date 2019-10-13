@@ -57,9 +57,16 @@ class computational_sequence():
 	def keys(self):
 		return self.data.keys()
 
-	def _remove_id(self,entry_id):
-		if entry_id in list(self.data.keys()):
-			del self.data[entry_id]
+
+	def _remove_id(self,entry_id,purge=False):
+		if purge==False:
+			if entry_id in list(self.data.keys()):
+				del self.data[entry_id]
+		if purge==True:
+			keys_to_del=[key for key in list(self.keys()) if key[:len(entry_id)]==entry_id]
+			for key_to_del in keys_to_del:
+				del self.data[key_to_del]
+
 
 	#TODO: try and excepts to be added to this code
 	def _initialize(self,resource,destination):

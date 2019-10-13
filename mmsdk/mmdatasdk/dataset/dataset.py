@@ -54,40 +54,61 @@ class mmdataset:
 			compseq.bib_citations(outfile)
 
 	def unify(self,active=True):
-		self.__unify_dataset(active)
-
-	def __unify_dataset(self,active=True):
 		log.status("Unify was called ...")
-
 
 		all_vidids={}
 		violators=[]
-
-
+		
+		all_keys={}
 		for seq_key in list(self.computational_sequences.keys()):
-			for vidid in list(self.computational_sequences[seq_key].data.keys()):
-				vidid=vidid.split('[')[0]
-				all_vidids[vidid]=True
-
-		for vidid in list(all_vidids.keys()):
-			for seq_key in list(self.computational_sequences.keys()):
-				if not any([vidid_in_seq for vidid_in_seq in self.computational_sequences[seq_key].data.keys() if vidid_in_seq[:len(vidid)]==vidid]):
-					violators.append(vidid)
+			all_keys[seq_key]=[vidid.split("[")[0] for vidid in self.computational_sequences[seq_key].data.keys()]
+		
+		valids=set.intersection(*[set(all_keys[x]) for x in all_keys])
+		violators=set()
+		for seq_key in list(self.computational_sequences.keys()):
+			violators=violators.union(set([vidid.split("[")[0] for vidid in self.computational_sequences[seq_key].data.keys()])-valids)
+		
 		if len(violators) >0 :
 			for violator in violators:
 				log.error("%s entry is not shared among all sequences, removing it ..."%violator,error=False)
 				if active==True:
-					self.__remove_id(violator)
+					self.remove_id(violator,purge=True)
 		if active==False and len(violators)>0:
 			log.error("%d violators remain, alignment will fail if called ..."%len(violators),error=True)
 
 		log.success("Unify completed ...")
 
+	def hard_unify(self,active=True):
+		log.status("Hard unify was called ...")
 
-	def __remove_id(self,entry_id):
-		for _,compseq in self.computational_sequences.items():
-			compseq._remove_id(entry_id)
+		all_vidids={}
+		violators=[]
+		
+		all_keys={}
+		for seq_key in list(self.computational_sequences.keys()):
+			all_keys[seq_key]=[vidid for vidid in self.computational_sequences[seq_key].data.keys()]
+		
+		valids=set.intersection(*[set(all_keys[x]) for x in all_keys])
+		for seq_key in list(self.computational_sequences.keys()):
+			hard_unify_compatible=all(["[" in vidid for vidid in self.computational_sequences[seq_key].data.keys()])
+			if hard_unify_compatible is False:
+				log.error("Hard unify can only be done on aligned computational sequences, %s violated this ... Exiting ..."%seq_key)
+			violators=set([vidid for vidid in self.computational_sequences[seq_key].data.keys()])-valids
+			for violator in violators:
+				if active==True:
+					log.error("%s entry is not shared among all sequences, removing it ..."%violator,error=False)
+					self[seq_key]._remove_id(violator,purge=False)
 
+			if active==False and len(violators)>0:
+				log.error("%d violators remain, alignment will fail if called ..."%len(violators),error=True)
+		
+		log.success("Hard unify completed ...")
+
+
+	
+	def remove_id(self,entry_id,purge=False):
+		for key,compseq in self.computational_sequences.items():
+			compseq._remove_id(entry_id,purge=purge)
 
 	def align(self,reference,collapse_functions=None,replace=True):
 		aligned_output={}
@@ -98,11 +119,12 @@ class mmdataset:
 			log.error("Computational sequence <%s> does not exist in dataset"%reference,error=True)
 		refseq=self.computational_sequences[reference].data
 		#unifying the dataset, removing any entries that are not in the reference computational sequence
-		self.__unify_dataset()
+		self.unify()
 
 		#building the relevant entries to the reference - what we do in this section is simply removing all the [] from the entry ids and populating them into a new dictionary
-		log.status("Pre-alignment based on <%s> computational sequence will now be done ..."%reference)
+		log.status("Pre-alignment based on <%s> computational sequence started ..."%reference)
 		relevant_entries=self.__get_relevant_entries(reference)
+		log.status("Alignment starting ...")
 
 		pbar = tqdm(total=len(refseq.keys()),unit=" Computational Sequence Entries",leave=False)
 		pbar.set_description("Overall Progress")
@@ -167,9 +189,10 @@ class mmdataset:
 		if len(self.keys())==0:
 			log.error("The dataset contains no computational sequences ... Exiting!",error=True)
 		self.unify()
-		all_keys=self[self.keys()[0]].keys()
+		self.hard_unify()
+		all_keys=self[list(self.keys())[0]].keys()
 		if len(all_keys)==0:
-			log.error("No entries in computational sequences or unify found no shared entries ... Exiting!")
+			log.error("No entries in computational sequences or removed during unify ... Exiting!")
 
 		unique_unnumbered_entries={}
 
@@ -200,10 +223,10 @@ class mmdataset:
 			return newdataset	
 
 	def impute(self,ref_key,imputation_fn=numpy.zeros):
-		log.status("Imputation called ...")
+		log.status("Imputation called with function: %s ..."%str(imputation_fn.__name__))
 		other_keys=list(self.keys())
 		other_keys.remove(ref_key)
-		other_keys_dims={x:list(self[x][self[x].keys()[0]]["features"].shape[1:]) for x in other_keys}
+		other_keys_dims={x:list(self[x][list(self[x].keys())[0]]["features"].shape[1:]) for x in other_keys}
 		pbar = tqdm(total=len(self[ref_key].keys()),unit=" Reference Computational Sequence Entries",leave=False)
 		pbar.set_description("Imputation Progress")
 		for seg_key in self[ref_key].keys():
@@ -211,7 +234,9 @@ class mmdataset:
 				try:
 					self[other_key][seg_key]
 				except:
-					self[other_key][seg_key]={"intervals":self[ref_key][seg_key]["intervals"],"features":imputation_fn([1]+other_keys_dims[other_key])}
+					num_entries=self[ref_key][seg_key]["intervals"].shape[0]
+					self[other_key][seg_key]={"intervals":self[ref_key][seg_key]["intervals"],"features":imputation_fn([num_entries]+other_keys_dims[other_key])}
+					#log.status("Imputing %s,%s with function %s"%(other_key,seg_key,str(imputation_fn.__name__)))
 			pbar.update(1)
 		pbar.close()
 		log.success("Imputation completed ...")
