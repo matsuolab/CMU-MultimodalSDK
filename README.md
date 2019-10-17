@@ -1,5 +1,5 @@
 
-# CMU-Multimodal SDK Version 1.1 (mmsdk)
+# CMU-Multimodal SDK Version 1.1.1 (mmsdk)
 
 CMU-Multimodal SDK provides tools to easily load well-known multimodal datasets and rapidly build neural multimodal deep models. Hence the SDK comprises of two modules: 1) mmdatasdk: module for downloading and procesing multimodal datasets using computational sequences. 2) mmmodelsdk: tools to utilize complex neural models as well as layers for building new models. The fusion models in prior papers will be released here. 
 
@@ -29,6 +29,8 @@ RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please re
 
 
 # News
+
+--> **Version 1.1.1 announced**. Social-IQ public test set has been added. Some new functionalities are also added including hard_unify. Some previous functionalities including unify and impute are improved. 
 
 --> **We released all the previous code which was in theano - check FAQ for download**. RL for Sentiment, MFN, MARN, and Graph-MFN. Unfortunately theano got deprecated before we could clean up these codes for release, and we moved on to pytorch. The codes are exactly identical to what we submitted the papers with, and they are running with the latest version available through pip. Newest pytorch implementations of our fusion methods are available in mmmodelsdk in mmsdk. 
 
