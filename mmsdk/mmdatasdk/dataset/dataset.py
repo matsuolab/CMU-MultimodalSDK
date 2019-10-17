@@ -188,13 +188,10 @@ class mmdataset:
 		log.status("Revert was called ...")
 		if len(self.keys())==0:
 			log.error("The dataset contains no computational sequences ... Exiting!",error=True)
-		self.unify()
-<<<<<<< HEAD
+
 		self.hard_unify()
-		all_keys=self[list(self.keys())[0]].keys()
-=======
 		all_keys=list(self[list(self.keys())[0]].keys())
->>>>>>> ea8d6d88196690aa43483d698b8230bdc5c9ac82
+
 		if len(all_keys)==0:
 			log.error("No entries in computational sequences or removed during unify ... Exiting!")
 
