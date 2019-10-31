@@ -179,7 +179,7 @@ class mmdataset:
 			if len(new_features.shape)==1:
 				new_features=new_features[None,:]
 		except:
-			log.error("Cannot collapse given the set of function.", error=True)
+			log.error("Cannot collapse given the set of functions. Please check for exceptions in your functions ...", error=True)
 		return new_interval,new_features
 
 	#TODO: This is not passive-align safe
