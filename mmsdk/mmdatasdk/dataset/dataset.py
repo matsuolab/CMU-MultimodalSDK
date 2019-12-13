@@ -270,6 +270,53 @@ class mmdataset:
 				filename+='.csd'
 			self.computational_sequences[seq_key].deploy(os.path.join(destination,filename))
 
+	def get_tensors(self,seq_len,non_sequences=[],direction=False):
+		""" Returns trainable tensor from computational sequence data
+
+		#Arguments
+			self: The dataset object.
+			seq_len: The maximum sequence length for the computational sequence entries, e.g. sentence length in words.
+			direction: True for right padding and False for left padding.
+			unify: the function to unify the computational seuqnces within the dataset. For example, if a key is in one computational sequence and not the other, what to do?
+
+		#Returns
+			Dictionary of numpy arrays with the same data type as computational sequences. Dictionaries include the same keys as the dataset
+
+		"""
+
+		data={}
+		output={}
+
+		csds=list(self.keys())
+		self.hard_unify()
+		
+		
+		def lpad(this_array,direction):
+			if direction==False:
+				temp_array=numpy.concatenate([numpy.zeros([seq_len]+list(this_array.shape[1:])),this_array],axis=0)[-seq_len:,...]
+			else:
+				temp_array=numpy.concatenate([this_array,numpy.zeros([seq_len]+list(this_array.shape[1:]))],axis=0)[:seq_len,...]
+			return temp_array
+
+		if len(csds)==0:
+			log.error("Dataset is empty, cannot get tensors. Exiting ...!",error=True)
+
+		for csd in csds:
+			data[csd]=[]
+
+		for key in list(self[csds[0]].keys()):
+			for csd in list(self.keys()):
+				this_array=self[csd][key]["features"]
+				if csd in non_sequences:
+					data[csd].append(this_array)
+				else:
+					data[csd].append(lpad(this_array,direction))
+		
+		for csd in csds:
+			output[csd]=numpy.array(data[csd])
+
+		return output
+
 	def __intersect_and_copy(self,ref,relevant_entry,epsilon):
 
 		sub=relevant_entry["intervals"]
