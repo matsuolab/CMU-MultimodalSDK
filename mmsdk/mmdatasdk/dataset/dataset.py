@@ -270,6 +270,30 @@ class mmdataset:
 				filename+='.csd'
 			self.computational_sequences[seq_key].deploy(os.path.join(destination,filename))
 
+	def sort(self,sort_function=sorted):
+		""" Sorts the computational sequence data based on the start time in intervals 
+
+		#Arguments
+			self: The dataset object.
+			sort_function: The function passed for sorting. This function will receive the intervals one by one for each key 
+
+		#Returns
+			Does not return any values - replaces in place
+
+		"""
+
+
+		for key in list(self.keys()):
+			for csd in list(self[key].keys()):
+				this_intervals_np=numpy.array(self[key][csd]["intervals"])
+				this_features_np=numpy.array(self[key][csd]["features"])
+				sorted_indices=sort_function(range(this_intervals_np.shape[0]),key=lambda x: this_intervals_np[x,0])
+				sorted_this_intervals_np=this_intervals_np[sorted_indices,:]
+				sorted_this_features_np=this_features_np[sorted_indices,:]
+				self[key][csd]["intervals"]=sorted_this_intervals_np
+				self[key][csd]["features"]=sorted_this_features_np
+
+
 	def get_tensors(self,seq_len,non_sequences=[],direction=False):
 		""" Returns trainable tensor from computational sequence data
 

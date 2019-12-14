@@ -22,6 +22,7 @@ cmumosi_highlevel=mmdatasdk.mmdataset(mmdatasdk.cmu_mosi.highlevel,'cmumosi/')
 #Aligning to the words to get word-level alignments
 cmumosi_highlevel.align('glove_vectors',collapse_functions=[myavg])
 cmumosi_highlevel.impute('glove_vectors')
+cmumosi_highlevel.sort()
 
 
 #get the intervals and features accompanying the 100th word in the some_video
@@ -38,6 +39,7 @@ cmumosi_highlevel.impute('glove_vectors')
 cmumosi_highlevel.add_computational_sequences(mmdatasdk.cmu_mosi.labels,'cmumosi/')
 cmumosi_highlevel.align('Opinion Segment Labels')
 cmumosi_highlevel.hard_unify()
+cmumosi_highlevel.sort()
 
 
 
