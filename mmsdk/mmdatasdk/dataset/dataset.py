@@ -301,7 +301,6 @@ class mmdataset:
 			self: The dataset object.
 			seq_len: The maximum sequence length for the computational sequence entries, e.g. sentence length in words.
 			direction: True for right padding and False for left padding.
-			unify: the function to unify the computational seuqnces within the dataset. For example, if a key is in one computational sequence and not the other, what to do?
 
 		#Returns
 			Dictionary of numpy arrays with the same data type as computational sequences. Dictionaries include the same keys as the dataset
