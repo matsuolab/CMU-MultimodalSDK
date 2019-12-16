@@ -293,8 +293,8 @@ class mmdataset:
 				self[key][csd]["intervals"]=sorted_this_intervals_np
 				self[key][csd]["features"]=sorted_this_features_np
 
-
-	def get_tensors(self,seq_len,non_sequences=[],direction=False):
+	#TODO: Add folds to this function
+	def get_tensors(self,seq_len,non_sequences=[],direction=False,folds=None):
 		""" Returns trainable tensor from computational sequence data
 
 		#Arguments
