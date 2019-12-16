@@ -301,14 +301,20 @@ class mmdataset:
 			self: The dataset object.
 			seq_len: The maximum sequence length for the computational sequence entries, e.g. sentence length in words.
 			direction: True for right padding and False for left padding.
-
+			folds: The folds in which the dataset should be split.
 		#Returns
 			Dictionary of numpy arrays with the same data type as computational sequences. Dictionaries include the same keys as the dataset
 
 		"""
 
-		data={}
-		output={}
+		data=[]
+		output=[]
+
+		
+		for i in range (len(folds)):
+			data.append({})
+			output.append({})
+		
 
 		csds=list(self.keys())
 		self.hard_unify()
@@ -321,22 +327,34 @@ class mmdataset:
 				temp_array=numpy.concatenate([this_array,numpy.zeros([seq_len]+list(this_array.shape[1:]))],axis=0)[:seq_len,...]
 			return temp_array
 
+		def detect_entry_fold(entry,folds):
+			entry_id=entry.split("[")[0]
+			for i in range(len(folds)):
+				if entry_id in folds[i]: return i
+			return None
+			
+
 		if len(csds)==0:
 			log.error("Dataset is empty, cannot get tensors. Exiting ...!",error=True)
 
-		for csd in csds:
-			data[csd]=[]
+		for i in range (len(folds)):
+			for csd in csds:
+				data[i][csd]=[]
 
 		for key in list(self[csds[0]].keys()):
+			which_fold=detect_entry_fold(key,folds)
+			if which_fold==None:
+				log.error("Key %s doesn't belong to any fold ... "%str(key),error=False)
 			for csd in list(self.keys()):
 				this_array=self[csd][key]["features"]
 				if csd in non_sequences:
-					data[csd].append(this_array)
+					data[which_fold][csd].append(this_array)
 				else:
-					data[csd].append(lpad(this_array,direction))
-		
-		for csd in csds:
-			output[csd]=numpy.array(data[csd])
+					data[which_fold][csd].append(lpad(this_array,direction))
+
+		for i in range(len(folds)):
+			for csd in csds:
+				output[i][csd]=numpy.array(data[i][csd])
 
 		return output
 
