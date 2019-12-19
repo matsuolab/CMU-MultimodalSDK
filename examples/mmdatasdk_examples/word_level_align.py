@@ -18,11 +18,12 @@ cmumosi_highlevel=mmdatasdk.mmdataset(mmdatasdk.cmu_mosi.highlevel,'cmumosi/')
 #some random video from cmumosi_highlevel
 #==>some_video=list(cmumosi_highlevel["glove_vectors"].data.keys())[0]
 
+#The next line is not needed for standard datasets as they are all sorted based on intervals in computational sequence entries
+#cmumosi_highlevel.sort()
 
 #Aligning to the words to get word-level alignments
 cmumosi_highlevel.align('glove_vectors',collapse_functions=[myavg])
 cmumosi_highlevel.impute('glove_vectors')
-cmumosi_highlevel.sort()
 
 
 #get the intervals and features accompanying the 100th word in the some_video
@@ -39,9 +40,6 @@ cmumosi_highlevel.sort()
 cmumosi_highlevel.add_computational_sequences(mmdatasdk.cmu_mosi.labels,'cmumosi/')
 cmumosi_highlevel.align('Opinion Segment Labels')
 cmumosi_highlevel.hard_unify()
-cmumosi_highlevel.sort()
-
-
 
 #get the intervals and features accompanying the 2nd in some_video
 #==>some_video_2nd_segment=some_video+'[2]'

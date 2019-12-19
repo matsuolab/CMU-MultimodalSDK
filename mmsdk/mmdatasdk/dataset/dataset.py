@@ -5,7 +5,9 @@ import time
 from tqdm import tqdm
 import os
 
-epsilon=10e-4
+#specified for numerical inconsistencies within floating points - if abs l1 distance two numbers is less than this, then they are the same. 
+#only use for interval comparison.
+epsilon=10e-6
 
 class mmdataset:
 
@@ -307,18 +309,26 @@ class mmdataset:
 
 		"""
 
+		csds=list(self.keys())
+
+		def handle_none_folds():
+			return_folds={}
+			for key in list(self[csds[0]].keys()):
+				return_folds[key.split("[")[0]]=None
+			return [list(return_folds.keys())]
+	
+		if folds==None:
+			log.error("No fold specified for get_tensors, defaulting to the first computational sequence ids",error=False)
+			folds=handle_none_folds()
+
+		self.hard_unify()
+
 		data=[]
 		output=[]
-
-		
+	
 		for i in range (len(folds)):
 			data.append({})
 			output.append({})
-		
-
-		csds=list(self.keys())
-		self.hard_unify()
-		
 		
 		def lpad(this_array,direction):
 			if direction==False:
