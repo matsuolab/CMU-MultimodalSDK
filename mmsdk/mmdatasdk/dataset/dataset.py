@@ -355,6 +355,7 @@ class mmdataset:
 			which_fold=detect_entry_fold(key,folds)
 			if which_fold==None:
 				log.error("Key %s doesn't belong to any fold ... "%str(key),error=False)
+				continue
 			for csd in list(self.keys()):
 				this_array=self[csd][key]["features"]
 				if csd in non_sequences:
