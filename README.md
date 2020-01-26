@@ -1,3 +1,5 @@
+# Upcoming ACL 2020 Challenge
+ACL Second Grand-Challenge and Workshop on Multimodal Language - accepts challenge and workshop papers. Challenge on CMU-MOSEI dataset with new test data and >$1k valued prize for winner team. Start here: http://multicomp.cs.cmu.edu/acl2020multimodalworkshop/
 
 # CMU-Multimodal SDK Version 1.1.1 (mmsdk)
 
