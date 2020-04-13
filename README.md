@@ -32,6 +32,8 @@ RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please re
 
 # News
 
+--> **Code for Factorized Multimodal Transformer** is released here (current SOTA on MOSI, IEMOCAP minus happy, POM): https://github.com/A2Zadeh/Factorized-Multimodal-Transformer
+
 --> **Version 1.1.1 announced**. Social-IQ public test set has been added. Some new functionalities are also added including hard_unify. Some previous functionalities including unify and impute are improved. 
 
 --> **We released all the previous code which was in theano - check FAQ for download**. RL for Sentiment, MFN, MARN, and Graph-MFN. Unfortunately theano got deprecated before we could clean up these codes for release, and we moved on to pytorch. The codes are exactly identical to what we submitted the papers with, and they are running with the latest version available through pip. Newest pytorch implementations of our fusion methods are available in mmmodelsdk in mmsdk. 
