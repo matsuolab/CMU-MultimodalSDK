@@ -46,7 +46,7 @@ RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please re
 
 --> **Version 1.0.4 announced**. Special thanks to Zhun Liu and Michael Grundie. New features added to CMU-MOSI, CMU-MOSEI and POM datasets. TLDR: Word alignment on CMU-MOSI is substantially improved, therefore the language modality is now working much better - previous alignment for MOSI is now deprecated. This new alignment is not applied to GloVe and BERT, only to the raw words - **hence I removed the glove and BERT for now - if you decide to build your own BERT you should consider running BERT on each segment not on the entire video since it is a contextual word embedding.** New features including OpenFace2, OpenSmile-IS09 are also added. Computational sequences for IEMOCAP are also released (only available by proof of email from USC, the zip file is password protected). Please check the next_steps.md to see where we are going next. 
 
---> **Old preprocessed datasets used in our papers are available at: http://immortal.multicomp.cs.cmu.edu/raw_datasets/old_processed_data/**. Still we highly recommend using SDK since you will have access to the latest updates for the datasets. 
+--> **Old preprocessed datasets used in our papers are available at: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/**. Still we highly recommend using SDK since you will have access to the latest updates for the datasets. 
 
 --> Alignment function on large datasets improved ~40x in speed. CMU-MOSEI now aligns in less than 4 hours. Previously the full dataset took around 2-3 days to fully align, majority of which was spent on alignment function.
 
