@@ -60,6 +60,6 @@ def process_data(folders=["cmumosei_highlevel","cmumosei_labels"]):
 if __name__=="__main__":
 
 	print ("You only need to download the data once!")
-	cmumosei_challenge_20=download_data()
+	cmumosei_dataset=download_data()
 	process_data()
 	log.success("Dataset processed")
