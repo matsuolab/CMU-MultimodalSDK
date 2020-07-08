@@ -13,7 +13,8 @@ def myavg(intervals,features):
 
 
 #Downloading the dataset
-cmumosi_highlevel=mmdatasdk.mmdataset(mmdatasdk.cmu_mosi.highlevel,'cmumosi/')
+#cmumosi_highlevel=mmdatasdk.mmdataset(mmdatasdk.cmu_mosi.highlevel,'cmumosi/')
+cmumosi_highlevel=mmdatasdk.mmdataset('cmumosi/')
 
 #some random video from cmumosi_highlevel
 #==>some_video=list(cmumosi_highlevel["glove_vectors"].data.keys())[0]

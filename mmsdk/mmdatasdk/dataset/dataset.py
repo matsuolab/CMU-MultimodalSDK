@@ -25,9 +25,16 @@ class mmdataset:
 				this_sequence=computational_sequence(join(recipe,computational_sequence_fname))
 				self.computational_sequences[this_sequence.metadata["root name"]]=this_sequence
 
-		if type(recipe) is dict:
+		elif type(recipe) is dict:
 			for entry, address in recipe.items():
 				self.computational_sequences[entry]=computational_sequence(address,destination)
+
+		elif type(recipe) is list:
+			#TODO: computational sequence with uuid
+			pass
+
+		else:
+			log.error("Cannot create a dataset with the given recipe. Exiting ...!",error=True)
 
 		if len(self.computational_sequences.keys())==0:
 			log.error("Dataset failed to initialize ...", error=True)
@@ -128,10 +135,10 @@ class mmdataset:
 		relevant_entries=self.__get_relevant_entries(reference)
 		log.status("Alignment starting ...")
 
-		pbar = tqdm(total=len(refseq.keys()),unit=" Computational Sequence Entries",leave=False)
+		pbar = log.progress_bar(total=len(refseq.keys()),unit=" Computational Sequence Entries",leave=False)
 		pbar.set_description("Overall Progress")
 		for entry_key in list(refseq.keys()):
-			pbar_small=tqdm(total=refseq[entry_key]['intervals'].shape[0],unit=" Segments",leave=False)
+			pbar_small=log.progress_bar(total=refseq[entry_key]['intervals'].shape[0],unit=" Segments",leave=False)
 			pbar_small.set_description("Aligning %s"%entry_key)
 			for i in range(refseq[entry_key]['intervals'].shape[0]):
 				#interval for the reference sequence
