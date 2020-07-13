@@ -8,8 +8,8 @@ highlevel["FACET_4.1"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/visual/CMU
 highlevel["FACET_4.2"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/visual/CMU_MOSI_Visual_Facet_42.csd'
 highlevel["OpenSmile-emobase2010"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/acoustic/CMU_MOSI_OpenSmile_EB10.csd'
 highlevel["OpenSMILE"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/acoustic/CMU_MOSI_openSMILE_IS09.csd'
-highlevel["OpenFace_1"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/visual/CMU_MOSI_OpenFace_1.csd'
-highlevel["OpenFace_2"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/visual/CMU_MOSI_OpenFace_2.csd'
+highlevel["OpenFace_1"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/visual/CMU_MOSI_Visual_OpenFace_1.csd'
+highlevel["OpenFace_2"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/visual/CMU_MOSI_Visual_OpenFace_2.csd'
 highlevel["COVAREP"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSI/acoustic/CMU_MOSI_COVAREP.csd'
 
 labels={}
