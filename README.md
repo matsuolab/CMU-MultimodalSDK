@@ -1,6 +1,3 @@
-# Upcoming ACL 2020 Challenge
-ACL20 Second Grand-Challenge and Workshop on Multimodal Language (Challenge-HML) - accepts challenge and workshop papers. Challenge on CMU-MOSEI dataset with new test data and >$1k valued prize for winner team. Start here: http://multicomp.cs.cmu.edu/acl2020multimodalworkshop/
-
 # CMU-Multimodal SDK Version 1.2.0 (mmsdk)
 
 CMU-Multimodal SDK provides tools to easily load well-known multimodal datasets and rapidly build neural multimodal deep models. Hence the SDK comprises of two modules: 1) mmdatasdk: module for downloading and procesing multimodal datasets using computational sequences. 2) mmmodelsdk: tools to utilize complex neural models as well as layers for building new models. The fusion models in prior papers will be released here. 
