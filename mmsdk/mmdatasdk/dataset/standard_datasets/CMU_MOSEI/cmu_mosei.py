@@ -3,7 +3,7 @@ raw["words"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/language/CMU_MOSEI_
 raw["phones"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/language/CMU_MOSEI_TimestampedPhones.csd'
 
 highlevel={}
-highlevel["glove_vectors"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/language/CMU_MOSEI_TimestampedGloveVectors.csd'
+highlevel["glove_vectors"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/language/CMU_MOSEI_TimestampedWordVectors.csd'
 highlevel["COVAREP"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/acoustic/CMU_MOSEI_COVAREP.csd'
 highlevel["OpenFace_2"]='http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/visual/CMU_MOSEI_VisualOpenFace2.csd'
 #highlevel["OpenSMILE"]="http://immortal.multicomp.cs.cmu.edu/CMU-MOSEI/acoustic/CMU_MOSEI_openSMILE_IS09.csd"
