@@ -29,6 +29,8 @@ RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please re
 
 # News
 
+--> We will be releasing the MOSEAS-WE1 (Multimodal Opinion Sentiment, Emotions and Attributes - West Europe V1) Dataset on November 15th 2020. The dataset is similar to MOSEI, except for languages of Spanish, French, German and Portuguese. We also include attributes similar to POM dataset on top of emotions and sentiment. 
+
 --> Version 1.2.0 released. Allowing for compression, and improving the computational sequence modules. 
 
 --> **Code for Factorized Multimodal Transformer** is released here (current SOTA on MOSI, IEMOCAP minus happy, POM): https://github.com/A2Zadeh/Factorized-Multimodal-Transformer
