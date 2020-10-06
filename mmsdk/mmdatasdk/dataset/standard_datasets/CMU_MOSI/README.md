@@ -10,7 +10,7 @@ CMU-Multimodal Opinion Sentiment Intensity (MOSI) dataset.
 8. For 7-class sentiment, we use the round function to map to discretized range [-3,3]
 
 # Scoreboard
-Feel free to push your novel work!
+Lower in this list is better. Feel free to push your novel work!
 
 | Models       | MAE   | Corr  | Acc-2 | Acc-2 | F-Score | F-Score | Acc-7 |
 |--------------|-------|-------|-------|-------|---------|---------|-------|
