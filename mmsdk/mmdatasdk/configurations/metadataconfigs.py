@@ -1,6 +1,7 @@
 featuresetMetadataTemplate=	[
 			"root name",#name of the featureset
 			"computational sequence description",#name of the featureset
+			"dimension names"
 			"computational sequence version",#the version of featureset
 			"alignment compatible",#name of the featureset
 			"dataset name",#featureset belongs to which dataset
