@@ -1,4 +1,4 @@
-** CMU MOSEAS Dataset - Western Europe Edition
+# CMU MOSEAS Dataset - Western Europe Edition
 
 Welcome to the Western Europe Edition of the CMU-MOSEAS dataset. In this dataset, we cover the languages of French, Spanish, Portuguese and German. This page is being expanded in the next few months, with further details of the dataset, as well as computational sequences. 
 
