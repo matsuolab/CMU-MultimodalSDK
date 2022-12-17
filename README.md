@@ -148,11 +148,6 @@ Multiple functions can be passed to *collapse_functions*, each of them will be a
 
 **POM**: POM is a dataset for analysis of persuasion on online social media. It has annotations for personality and sentiment as well, which makes it very compelling for large number of tasks. 
 
-**For downloading raw datasets (raw video, audio and text)**, please refer to link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/. It is highly suggested that you do not use raw data unless you are running behavioral studies or extracting your own features. If you are extracting new features, you can create your own computational sequences and use the SDK.  
-
-
-
-
 # Frequently Asked Questions
 
 #### 1. What does the SDK do for me? 
@@ -169,7 +164,7 @@ The goal of SDK is to make sure users always have access to the state of the art
 
 #### 4. Do you share raw data?
 
-Yes, we do here is the link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/. But we don't advocate going solo on processing everything again (recreating the wheel). If you want to process your own features, see item 6 in this FAQ.
+No - we are not allowed to share the raw videos due to privacy of Youtube content creators. We only share anonymized processed features.
 
 #### 5. How do I check my results with previous work, if computational sequences keep on improving?
 
