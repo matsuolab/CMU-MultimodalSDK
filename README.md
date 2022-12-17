@@ -22,10 +22,9 @@ If you use the data and models created under the CMU Multimodal SDK, please cons
 
 If you are only interested in downloading the word-aligned data and models to run experiments on (and not interested in exploring new features or alignment techniques), the ready-to-go aligned files can be downloaded from: 
 
-Data: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/ 
+Data for MOSI and MOSEI: https://github.com/pliang279/MultiBench
 
 RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please refer to related repos for pytorch implementation for some of these models): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY
-
 
 # News
 
@@ -47,16 +46,11 @@ RL, MFN, MARN, Graph-MFN Model Theano Codes (theano is now deprecated, please re
 
 --> A nice tutorial on how to use the SDK is prepared by Zhun Liu [here](https://github.com/Justin1904/CMU-MultimodalSDK-Tutorials). SDK should not be considered trivial to use. The machine learning scientists are still involved in a lot of decisions e.g. how to handle cases where some csd has time gaps (like detector fails or nan values). 
 
---> **Version 1.0.4 announced**. Special thanks to Zhun Liu and Michael Grundie. New features added to CMU-MOSI, CMU-MOSEI and POM datasets. TLDR: Word alignment on CMU-MOSI is substantially improved, therefore the language modality is now working much better - previous alignment for MOSI is now deprecated. This new alignment is not applied to GloVe and BERT, only to the raw words - **hence I removed the glove and BERT for now - if you decide to build your own BERT you should consider running BERT on each segment not on the entire video since it is a contextual word embedding.** New features including OpenFace2, OpenSmile-IS09 are also added. Computational sequences for IEMOCAP are also released (only available by proof of email from USC, the zip file is password protected). Please check the next_steps.md to see where we are going next. 
-
---> **Old preprocessed datasets used in our papers are available at: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/**. Still we highly recommend using SDK since you will have access to the latest updates for the datasets. 
+--> **Version 1.0.4 announced**. Special thanks to Zhun Liu and Michael Grundie. New features added to CMU-MOSI, CMU-MOSEI and POM datasets. TLDR: Word alignment on CMU-MOSI is substantially improved, therefore the language modality is now working much better - previous alignment for MOSI is now deprecated. This new alignment is not applied to GloVe and BERT, only to the raw words - **hence I removed the glove and BERT for now - if you decide to build your own BERT you should consider running BERT on each segment not on the entire video since it is a contextual word embedding.** New features including OpenFace2, OpenSmile-IS09 are also added. Computational sequences for IEMOCAP are also released (only available by proof of email from USC, the zip file is password protected). Please check the next_steps.md to see where we are going next.
 
 --> Alignment function on large datasets improved ~40x in speed. CMU-MOSEI now aligns in less than 4 hours. Previously the full dataset took around 2-3 days to fully align, majority of which was spent on alignment function.
 
---> Have a look at the newly released RAVEN model: https://github.com/victorywys/RAVEN - https://arxiv.org/pdf/1811.09362.pdf - tldr: while previously we averaged nonverbal information for each word under assumption that subword nonverbal behaviors are probably mostly constant, we recently discovered that better modeling of subword nonverbal behaviors actually helps a lot! More than we originally anticipated, we are able to achieve competative results with SOTA just using a LSTM on nonverbal shifts in word vectors. 
-
---> **Raw data now available for download outside SDK - download from http://immortal.multicomp.cs.cmu.edu/raw_datasets/**. 
-
+--> Have a look at the newly released RAVEN model: https://github.com/victorywys/RAVEN - https://arxiv.org/pdf/1811.09362.pdf - tldr: while previously we averaged nonverbal information for each word under assumption that subword nonverbal behaviors are probably mostly constant, we recently discovered that better modeling of subword nonverbal behaviors actually helps a lot! More than we originally anticipated, we are able to achieve competative results with SOTA just using a LSTM on nonverbal shifts in word vectors.
 
 ## CMU Multimodal Data SDK (mmdatasdk)
 
@@ -144,8 +138,6 @@ def myavg(intervals,features):
 Multiple functions can be passed to *collapse_functions*, each of them will be applied one by one and will be concatenated as the final output. 
 
 
-
-
 # Supported Datasets
 
 **Social-IQ 1.0**: Social-IQ 1.0 is a benchmark dataset for artificial social intelligence. It involves questions and answers for online social media videos where natuarlistic interactions happen between involved individuals in the video. 
@@ -197,6 +189,6 @@ Please report it ASAP on the issues tab in github or simply contact us through e
 
 #### 9. Do you share the code and data for publications prior to mid 2018?
 
-Yes, we do here is the link: http://immortal.multicomp.cs.cmu.edu/raw_datasets/processed_data/ and here is the code (theano): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY. These are exact data used for our experiments, already aligned at word level. You can certainly use this data, but I do advocate exploring the datasets using the SDK. For example try different alignments, or strategies. (Please note that CMU-MOSEI had some issues for some videos over their acoustic modality. They are now solved and CMU-MOSEI downloaded from SDK gets better performance than the one we ran experiments on for original paper)
+Yes, we do, here is the code (theano): https://drive.google.com/drive/u/2/folders/1NxyFuogyzNFoCH0Zi5aIXUGYKGuSY9TY. These are exact data used for our experiments, already aligned at word level. You can certainly use this data, but I do advocate exploring the datasets using the SDK. For example try different alignments, or strategies. (Please note that CMU-MOSEI had some issues for some videos over their acoustic modality. They are now solved and CMU-MOSEI downloaded from SDK gets better performance than the one we ran experiments on for original paper)
 
 
